@@ -1,0 +1,13 @@
+
+
+.search-table {
+    display: flex;
+}
+
+.table-pager {
+    text-align: center;
+}
+
+.bottom-board {
+    text-align: right;
+}
