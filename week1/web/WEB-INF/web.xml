@@ -3,4 +3,32 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    
+    <servlet>
+        <servlet-name>modify</servlet-name>
+        <jsp-file>/board/modify.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>modify</servlet-name>
+        <url-pattern>/board/modify</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>write</servlet-name>
+        <jsp-file>/board/write.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>write</servlet-name>
+        <url-pattern>/board/write</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>view</servlet-name>
+        <jsp-file>/board/view.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>view</servlet-name>
+        <url-pattern>/board/view</url-pattern>
+    </servlet-mapping>
+    
 </web-app>
