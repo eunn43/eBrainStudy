@@ -1,2 +1,9 @@
-package PACKAGE_NAME;public class FreeListService {
+import web.entity.Notice;
+
+import java.util.List;
+
+public class FreeListService {
+    public List<Notice> getList() {
+        return null;
+    }
 }

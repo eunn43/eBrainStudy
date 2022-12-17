@@ -2,6 +2,9 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.Statement" %>
 <%@ page import="java.sql.ResultSet" %>
+<%@ page import="web.entity.Notice" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
   String url = "jdbc:mariadb://localhost:3306/list";
@@ -11,7 +14,26 @@
   Statement st = con.createStatement();
   ResultSet rs = st.executeQuery(sql);
 
+  List<Notice> list = new ArrayList<>();
+  while(rs.next()) {
+    Notice notice = new Notice(
+            rs.getInt("id"),
+            rs.getString("title"),
+            rs.getString("writer"),
+            rs.getDate("regDate"),
+            rs.getDate("modDate"),
+            rs.getInt("views"),
+            rs.getString("files"),
+            rs.getString("content")
+    );
+    list.add(notice);
+  }
 
+  request.setAttribute("list", list);
+
+  rs.close();
+  st.close();
+  con.close();
 %>
 
 <html>
@@ -35,7 +57,7 @@
       <input id="search" type="search" placeholder="검색어를 입력해주세요. (제목+작성자+내용)">
       <button type="submit">검색</button>
     </div>
-    <div clasee="top-board">
+    <div class="top-board">
       <p>총 n건</p>
     </div>
     <div class="board-table">
@@ -44,7 +66,7 @@
         <tr>
           <th scope="col" class="th-cate">카테고리</th>
           <th scope="col" class="th-file"></th>
-          <th scope="col" class="th-titile">제목</th>
+          <th scope="col" class="th-title">제목</th>
           <th scope="col" class="th-writer">작성자</th>
           <th scope="col" class="th-views">조회수</th>
           <th scope="col" class="th-date-up">등록일시</th>
@@ -52,17 +74,21 @@
         </tr>
         </thead>
         <tbody>
-        <% while(rs.next()) {%>
+        <%
+          List<Notice> lst = (List<Notice>) request.getAttribute("list");
+          for(Notice n : lst) {
+            pageContext.setAttribute("n", n);
+        %>
         <tr>
           <td><%=rs.getString("cate")%></td>
-          <td>o</td>
+          <td></td> //file image
           <th>
-            <a href="#!">OKKY 3월 세미나 서ㅣ슷 개발자로 커리어 전환하기 by ...</a>
+            <a href="view.jsp?id=${n.id}>">${n.title}</a>
           </th>
-          <td><%=rs.getString("writer")%></td>
-          <td><%=rs.getInt("views")%></td>
-          <td><%=rs.getDate("registdate")%></td>
-          <td><%=rs.getDate("modifydate")%></td>
+          <td>${n.writer}</td>
+          <td>${n.views}</td>
+          <td>${n.regDate}</td>
+          <td>${n.modDate}</td>
         </tr>
         <% } %>
         </tbody>
@@ -77,8 +103,3 @@
   </div>
   </body>
 </html>
-<%
-  rs.close();
-  st.close();
-  con.close();
-%>
