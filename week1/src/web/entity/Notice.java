@@ -5,21 +5,33 @@ import java.util.Date;
 
 public class Notice {
     private int     id;
+<<<<<<< HEAD
     private String  cate;
+=======
+>>>>>>> 3b3cde11c77624bd98db9eeb836b392d2f85d518
     private String  title;
     private String  writer;
     private Date    regDate;
     private Date    modDate;
     private int     views;
+<<<<<<< HEAD
     private int     files;
+=======
+    private String  files;
+>>>>>>> 3b3cde11c77624bd98db9eeb836b392d2f85d518
     private String  content;
 
     public Notice() {
     }
 
+<<<<<<< HEAD
     public Notice(int id, String cate, String title, String writer, Date regDate, Date modDate, int views, int files, String content) {
         this.id = id;
         this.cate = cate;
+=======
+    public Notice(int id, String title, String writer, Date regDate, Date modDate, int views, String files, String content) {
+        this.id = id;
+>>>>>>> 3b3cde11c77624bd98db9eeb836b392d2f85d518
         this.title = title;
         this.writer = writer;
         this.regDate = regDate;
@@ -37,6 +49,7 @@ public class Notice {
         this.id = id;
     }
 
+<<<<<<< HEAD
     public String getCate() {
         return cate;
     }
@@ -45,6 +58,8 @@ public class Notice {
         this.cate = cate;
     }
 
+=======
+>>>>>>> 3b3cde11c77624bd98db9eeb836b392d2f85d518
     public String getTitle() {
         return title;
     }
@@ -85,11 +100,19 @@ public class Notice {
         this.views = views;
     }
 
+<<<<<<< HEAD
     public int getFiles() {
         return files;
     }
 
     public void setFiles(int files) {
+=======
+    public String getFiles() {
+        return files;
+    }
+
+    public void setFiles(String files) {
+>>>>>>> 3b3cde11c77624bd98db9eeb836b392d2f85d518
         this.files = files;
     }
 
